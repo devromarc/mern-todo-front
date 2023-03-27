@@ -45,7 +45,7 @@ function App() {
   const deleteTodo = async (id) => {
     try {
       await axios.delete(
-        "https://mern-todo-app-api-9i32.onrender.com/delete/" + id
+        "https://mern-todo-app-api-9i32.onrender.com/todo/delete/" + id
       );
       setTodos((todos) => todos.filter((todo) => todo._id !== id));
     } catch (error) {

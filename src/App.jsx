@@ -12,7 +12,9 @@ function App() {
   useEffect(() => {
     const getItemList = async () => {
       try {
-        const res = await axios.get("http://localhost:5500/todos");
+        const res = await axios.get(
+          "https://mern-todo-app-api-9i32.onrender.com/todos"
+        );
         setTodos(res.data);
       } catch (error) {
         console.log(error);
@@ -24,7 +26,7 @@ function App() {
   const completeTodo = async (id) => {
     try {
       const response = await axios.get(
-        "http://localhost:5500/todo/complete/" + id
+        "https://mern-todo-app-api-9i32.onrender.com/todo/complete/" + id
       );
       const data = response.data;
       setTodos((todos) => {
@@ -42,7 +44,9 @@ function App() {
 
   const deleteTodo = async (id) => {
     try {
-      await axios.delete("http://localhost:5500/todo/delete/" + id);
+      await axios.delete(
+        "https://mern-todo-app-api-9i32.onrender.com/delete/" + id
+      );
       setTodos((todos) => todos.filter((todo) => todo._id !== id));
     } catch (error) {
       console.log(error);
@@ -52,9 +56,12 @@ function App() {
   const addTodo = async (e) => {
     e.preventDefault();
     try {
-      const data = await axios.post("http://localhost:5500/todo/new", {
-        item: createTodo,
-      });
+      const data = await axios.post(
+        "https://mern-todo-app-api-9i32.onrender.com/todo/new",
+        {
+          item: createTodo,
+        }
+      );
       // console.log(data);
       setCreateTodo("");
       setPopup(false);
@@ -67,7 +74,7 @@ function App() {
   const updateItem = async () => {
     try {
       const res = await axios.put(
-        "http://localhost:5500/todo/update/" + updateId,
+        "https://mern-todo-app-api-9i32.onrender.com/todo/update/" + updateId,
         { item: isUpdate }
       );
       setIsUpdate("");
